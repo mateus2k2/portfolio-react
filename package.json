@@ -6,11 +6,7 @@
   "dependencies": {
     "@apollo/client": "^3.9.9",
     "@react-pdf/renderer": "^3.4.2",
-    "@strapi/blocks-react-renderer": "^1.0.1",
     "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^14.2.2",
-    "@testing-library/user-event": "^14.5.2",
-    "antd": "^5.18.1",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "crypto-browserify": "^3.12.0",
@@ -29,7 +25,6 @@
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "react-tsparticles": "^1.42.2",
-    "remark-gfm": "^4.0.0",
     "typewriter-effect": "^2.21.0",
     "web-vitals": "^3.5.2"
   },

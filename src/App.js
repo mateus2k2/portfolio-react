@@ -16,11 +16,9 @@ import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 function App() {
-
   return (
-    <Router>
+    <Router basename="/portfolio-react">
       <div className="App" id="scroll">
         <Navbar />
         <ScrollToTop />
@@ -34,9 +32,7 @@ function App() {
         <Footer />
       </div>
     </Router>
-
   );
 }
 
 export default App;
-
