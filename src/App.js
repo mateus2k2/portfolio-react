@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
-import Blogs from "./components/Blogs/Blogs";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import {
@@ -17,7 +16,6 @@ import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Post from "./components/Blogs/Post";
 
 function App() {
 
@@ -31,8 +29,6 @@ function App() {
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogs/:id" element={<Post />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />

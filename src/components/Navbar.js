@@ -107,15 +107,14 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/blogs"
-                onClick={() => updateExpanded(false)}
+            <Nav.Item className="fork-btn">
+              <Button
+                href="https://mateus2k2.github.io/blog/en"
+                target="_blank"
+                className="fork-btn-inner"
               >
-                <ImBlog style={{ marginBottom: "2px" }} />
-                {" "}Blogs
-              </Nav.Link>
+                <ImBlog style={{ marginBottom: "2px" }} /> Blogs
+              </Button>
             </Nav.Item>
 
             <Nav.Item className="fork-btn">
