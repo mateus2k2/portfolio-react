@@ -4,8 +4,6 @@ import { useQuery } from '@apollo/client';
 import getStack from './../Queries/Stack';
 import Preloader from "./../Pre";
 
-import GetIcon from "./../GetIcon";
-
 function ToolStack() {
   const { loading, error, data } = useQuery(getStack("tool"), {
     context: {
@@ -22,7 +20,7 @@ function ToolStack() {
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
       {data.skillTools.data.map(({ attributes, id }) => (
         <Col xs={4} md={2} className="tech-icons" key={id}>
-          <GetIcon icon={attributes.iconName} />
+          <div dangerouslySetInnerHTML={{ __html: attributes.iconName }}/>
           <h5>{attributes.name}</h5>
         </Col>
       ))}
