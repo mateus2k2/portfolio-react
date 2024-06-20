@@ -9,10 +9,12 @@ import { useQuery } from '@apollo/client';
 import getHome from './../Queries/Home';
 import Preloader from "./../Pre";
 
+import offlineHomeData from './../Queries/offline/Home'
+
 function Home() {
   const { language } = useContext(LanguageContext);
 
-  const { loading, error, data } = useQuery(getHome(language), {
+  let { loading, error, data } = useQuery(getHome(language), {
     context: {
           headers: {
             authorization: `Bearer ${process.env.REACT_APP_STRAPI_API}`,
@@ -21,7 +23,11 @@ function Home() {
   });
 
   if (loading) return <Preloader load={true} />;
-  if (error) return
+
+  if (!data || error) data = offlineHomeData(language).data;
+
+  // let data = {}
+  // data = offlineHomeData(language).data;
 
   return (
     <section>

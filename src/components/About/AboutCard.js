@@ -6,10 +6,12 @@ import { useQuery } from '@apollo/client';
 import { LanguageContext } from './../LanguageContext';
 import Preloader from "./../Pre";
 
+import offlineAboutData from './../Queries/offline/About'
+
 function AboutCard() {
   const { language } = useContext(LanguageContext);
 
-  const { loading, error, data } = useQuery(getAbout(language), {
+  let { loading, error, data } = useQuery(getAbout(language), {
     context: {
           headers: {
             authorization: `Bearer ${process.env.REACT_APP_STRAPI_API}`,
@@ -18,7 +20,8 @@ function AboutCard() {
   });
 
   if (loading) return <Preloader load={true} />;
-  if (error) return
+
+  if (!data || error) data = offlineAboutData(language).data;
 
   // justify
   // about-activity

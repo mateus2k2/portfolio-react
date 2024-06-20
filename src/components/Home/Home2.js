@@ -14,10 +14,14 @@ import getHome from './../Queries/Home';
 import { useQuery } from '@apollo/client';
 import Preloader from "./../Pre";
 
+import offlineHomeData from './../Queries/offline/Home'
+import offlineSocialData from './../Queries/offline/Social'
+
 function Home2() {
   const { language } = useContext(LanguageContext);
+  let strapiPath = process.env.REACT_APP_STRAPI_URL
 
-  const { loading, error, data } = useQuery(getHome(language), {
+  let { loading, error, data } = useQuery(getHome(language), {
     context: {
           headers: {
             authorization: `Bearer ${process.env.REACT_APP_STRAPI_API}`,
@@ -26,7 +30,7 @@ function Home2() {
   });
   
   
-  const { loading: loadingSocial, error: errorSocial, data: socialData } = useQuery(getSocial(), {
+  let { loading: loadingSocial, error: errorSocial, data: socialData } = useQuery(getSocial(), {
     context: {
           headers: {
             authorization: `Bearer ${process.env.REACT_APP_STRAPI_API}`,
@@ -34,13 +38,26 @@ function Home2() {
         },
   });
 
+  
   // let loadingSocial, errorSocial, socialData
   
-  if (loading) return <Preloader load={true} />;
-  if (error) return <Preloader load={true} />;
+  if (loading || loadingSocial) return <Preloader load={true} />;
+  if (!data || error) {
+    data = offlineHomeData(language).data;
+    strapiPath = ''
+  }
+  if (!socialData || errorSocial) {
+    strapiPath = ''
+    socialData = offlineSocialData().data;
+  }
 
-  if (loadingSocial) return <Preloader load={true} />;
-  if (errorSocial) return <Preloader load={true} />;
+  // let data = {}
+  // let socialData = {}
+  // data = offlineHomeData(language).data;
+  // socialData = offlineSocialData().data;
+
+  // console.log(data)
+  // console.log(socialData)
 
   return (
     <Container fluid className="home-about-section" id="about">
@@ -55,7 +72,7 @@ function Home2() {
           </Col>
           <Col md={4} className="myAvtar">
             <Tilt>
-              <img src={`${process.env.REACT_APP_STRAPI_URL}${data.home.data.attributes.avatar.data.attributes.url}`} className="img-fluid" alt="avatar" />
+              <img src={`${strapiPath}${data.home.data.attributes.avatar.data.attributes.url}`} className="img-fluid" alt="avatar" />
             </Tilt>
           </Col>
         </Row>

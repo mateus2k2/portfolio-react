@@ -18,7 +18,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <Router basename="/portfolio-react">
+    <Router basename={process.env.REACT_APP_ROOT_URL}>
       <div className="App" id="scroll">
         <Navbar />
         <ScrollToTop />
@@ -27,7 +27,7 @@ function App() {
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
         <Footer />
       </div>

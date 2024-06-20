@@ -6,10 +6,12 @@ import { useQuery } from '@apollo/client';
 import { LanguageContext } from './../LanguageContext';
 import Preloader from "./../Pre";
 
+import offlineSocialData from './../Queries/offline/Social'
+
 function Github() {
   const { language } = useContext(LanguageContext);
   
-  const { loading, error, data } = useQuery(getSocial(), {
+  let { loading, error, data } = useQuery(getSocial(), {
     context: {
           headers: {
             authorization: `Bearer ${process.env.REACT_APP_STRAPI_API}`,
@@ -18,7 +20,8 @@ function Github() {
   });
 
   if (loading) return <Preloader load={true} />;
-  if (error) return
+
+  if (!data || error) data = offlineSocialData().data;
 
   const username = new URL(data.social.data.attributes.github).pathname.split('/')[1];
 

@@ -4,8 +4,10 @@ import { useQuery } from '@apollo/client';
 import getStack from './../Queries/Stack';
 import Preloader from "./../Pre";
 
+import offlineStackData from './../Queries/offline/Stack'
+
 function ToolStack() {
-  const { loading, error, data } = useQuery(getStack("tool"), {
+  let { loading, error, data } = useQuery(getStack("tool"), {
     context: {
       headers: {
         authorization: `Bearer ${process.env.REACT_APP_STRAPI_API}`,
@@ -14,13 +16,15 @@ function ToolStack() {
   });
 
   if (loading) return <Preloader load={true} />;
-  if (error) return <Preloader load={true} />;
+
+  
+  if (!data || error) data = offlineStackData("tool").data;
 
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
       {data.skillTools.data.map(({ attributes, id }) => (
         <Col xs={4} md={2} className="tech-icons" key={id}>
-          <div dangerouslySetInnerHTML={{ __html: attributes.iconName }}/>
+          <div dangerouslySetInnerHTML={{ __html: attributes.icon }}/>
           <h5>{attributes.name}</h5>
         </Col>
       ))}

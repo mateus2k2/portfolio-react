@@ -11,12 +11,14 @@ import { useQuery } from '@apollo/client';
 import getSocial from './Queries/Social';
 import Preloader from "./Pre";
 
+import offlineSocialData from './Queries/offline/Social'
+
 function Footer() {
   const { language } = useContext(LanguageContext);
   let date = new Date();
   let year = date.getFullYear();
 
-  const { loading, error, data } = useQuery(getSocial(), {
+  let { loading, error, data } = useQuery(getSocial(), {
     context: {
           headers: {
             authorization: `Bearer ${process.env.REACT_APP_STRAPI_API}`,
@@ -25,7 +27,8 @@ function Footer() {
   });
 
   if (loading) return <Preloader load={true} />;
-  if (error) return <Preloader load={true} />;
+
+  if (!data || error) data = offlineSocialData().data;
 
   return (
     <Container fluid className="footer">

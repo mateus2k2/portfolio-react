@@ -11,17 +11,20 @@ import { LanguageContext } from './../LanguageContext';
 import 'react-pdf/dist/Page/TextLayer.css';
 import Preloader from "./../Pre";
 
+import offlineResumeData from './../Queries/offline/Resume'
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
   const { language } = useContext(LanguageContext);
+  let strapiPath = process.env.REACT_APP_STRAPI_URL
 
   useEffect(() => {
     setWidth(window.innerWidth);
   }, []);
 
-  const { loading, error, data } = useQuery(getResume(language), {
+  let { loading, error, data } = useQuery(getResume(language), {
     context: {
           headers: {
             authorization: `Bearer ${process.env.REACT_APP_STRAPI_API}`,
@@ -30,9 +33,13 @@ function ResumeNew() {
   });
 
   if (loading) return <Preloader load={true} />;
-  if (error) return
 
-  const pdfLink = `${process.env.REACT_APP_STRAPI_URL}${data.resume.data.attributes.resume.data.attributes.url}`;
+  if (!data || error) {
+    strapiPath = ''
+    data = offlineResumeData(language).data;
+  }
+
+  const pdfLink = `${strapiPath}${data.resume.data.attributes.resume.data.attributes.url}`;
 
   return (
     <div>
