@@ -18,8 +18,8 @@ function getSocial() {
             "attributes": {
               "instagram": data.instagram,
               "twitter": data.twitter,
-              "linkedin": data.github,
-              "github": data.linkedin
+              "linkedin": data.linkedin,
+              "github": data.github
             }
           },
       }
