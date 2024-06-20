@@ -10,7 +10,7 @@ function getStack(type) {
           id
           attributes {
             name
-            iconName
+            icon
             type
           }
         }

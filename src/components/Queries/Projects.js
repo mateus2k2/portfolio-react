@@ -11,6 +11,7 @@ function getBlogs(language) {
             attributes {
               title: title${language}
               description: description${language}
+              blog: blog${language}
               demoLink
               github
               banner {
