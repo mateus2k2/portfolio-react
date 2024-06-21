@@ -1,4 +1,4 @@
-import banner from "../../../Assets/Strapi/thumbnail_in_Dev.jpg"
+import banner from "../../../Assets/Strapi/in_Dev.jpg"
 
 function getProjects(language) {
     let GET_PROJECTS;
