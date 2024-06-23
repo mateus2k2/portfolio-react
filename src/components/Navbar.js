@@ -116,7 +116,7 @@ function NavBar() {
 
             <Nav.Item className="fork-btn">
               <Button
-                href={language === 'EN' ? "https://mateus2k2.github.io/blog/en" : "https://mateus2k2.github.io/blog/pt"}
+                href={language === 'EN' ? "https://mateus2k2.github.io/en" : "https://mateus2k2.github.io/pt"}
                 target="_blank"
                 className="fork-btn-inner"
               >

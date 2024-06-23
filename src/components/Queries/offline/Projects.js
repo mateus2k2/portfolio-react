@@ -11,8 +11,8 @@ function getProjects(language) {
         "descriptionPT": "Jogo da velha online em python utilizando apenas sockets. conta com interface gráfica com registro. login, jogo contra ia localizada no servidor, efeitos sonoros, entre outros",
         "demoLink": null,
         "github": "https://github.com/mateus2k2/TicTacToe-Python-Sockets-GUI",
-        "blogEN": "https://mateus2k2.github.io/blog/en/blog/test1/",
-        "blogPT": "https://mateus2k2.github.io/blog/pt/blog/test1/"
+        "blogEN": "https://mateus2k2.github.io/en/posts/text-and-typography/",
+        "blogPT": "https://mateus2k2.github.io/pt/posts/text-and-typography/"
       },
       {
         "titleEN": "Rockerizando",
@@ -21,8 +21,8 @@ function getProjects(language) {
         "descriptionPT": "Organizador de eventos e festas. frontend desenvolvido em react e backend em python utilizando o framework flask. aplicatico conta com crud de usuários e eventos entre outras funcionalidades",
         "demoLink": null,
         "github": "https://github.com/mateus2k2/Rockrizando",
-        "blogEN": "https://mateus2k2.github.io/blog/en/blog/test1/",
-        "blogPT": "https://mateus2k2.github.io/blog/pt/blog/test1/"
+        "blogEN": "https://mateus2k2.github.io/en/posts/text-and-typography/",
+        "blogPT": "https://mateus2k2.github.io/pt/posts/text-and-typography/"
       }
     ]
 
