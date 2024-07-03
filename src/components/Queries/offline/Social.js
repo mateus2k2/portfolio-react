@@ -5,7 +5,8 @@ function getSocial() {
       "instagram": "https://www.instagram.com/mateus2k2",
       "twitter": "https://twitter.com/2k2Mateus",
       "github": "https://github.com/mateus2k2/",
-      "linkedin": "https://www.linkedin.com/in/mateus-silva-0b34131b5/"
+      "linkedin": "https://www.linkedin.com/in/mateus-silva-0b34131b5/",
+      "lattes": "https://lattes.cnpq.br/2777327374488364"
   }
 
   GET_SOCIAL = 
@@ -19,7 +20,8 @@ function getSocial() {
               "instagram": data.instagram,
               "twitter": data.twitter,
               "linkedin": data.linkedin,
-              "github": data.github
+              "github": data.github,
+              "lattes": data.lattes
             }
           },
       }

@@ -13,6 +13,7 @@ function getSocial() {
               twitter
               linkedin
               github
+              lattes
           }
         }
       }
